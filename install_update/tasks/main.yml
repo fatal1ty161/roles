@@ -9,6 +9,10 @@
       state: present
       key: "https://rpms.remirepo.net/RPM-GPG-KEY-remi2021"
 
+- rpm_key:
+      state: present
+      key: "https://per.co.na/keys/all-keys.rpm"
+
 - name: Download epel GPG key
   rpm_key:
       state: present
@@ -19,6 +23,11 @@
     name: "https://rpms.remirepo.net/enterprise/remi-release-9.rpm"
     state: present
   #when: ansible_facts['os_family'] == 'RedHat' and ansible_facts ['distribution_major_version'] >= '9'
+
+- name: Add Repo Percona
+  dnf:
+    name: "https://repo.percona.com/yum/percona-release-latest.noarch.rpm"
+    state: present
 
 - name: DNF update the system
   dnf:
