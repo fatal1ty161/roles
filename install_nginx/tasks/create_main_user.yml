@@ -1,0 +1,15 @@
+---
+- name: Create group for bitrix project
+  group:
+    name: "{{ bitrix_project_user.group }}"
+    state: "{{ bitrix_project_user.state }}"
+    gid: "{{ bitrix_project_user.gid }}"
+
+- name: "Manage user"
+  user:
+    name: "{{ bitrix_project_user.name }}"
+    comment: "{{ bitrix_project_user.comment }}"
+    uid: "{{ bitrix_project_user.uid}}"
+    group: "{{ bitrix_project_user.group }}"
+    shell: "{{ bitrix_project_user.shell }}"
+    state: "{{ bitrix_project_user.state }}"

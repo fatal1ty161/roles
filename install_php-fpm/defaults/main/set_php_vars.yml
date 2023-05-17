@@ -1,0 +1,12 @@
+---
+php_config_dir: "/etc/php-fpm.d/"
+php_repo: "remi-7.4"
+php_packages:
+  - php-7.4
+  - php7.4-mysql
+  - php-memcache
+  - php-memcached
+  - php-mysqlnd
+  - php-ldap
+  - php-gd
+

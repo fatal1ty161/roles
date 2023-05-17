@@ -1,0 +1,17 @@
+---
+bitrix_main_project_name: []
+bitrix_home_dir: "/home/"
+bitrix_core_path: "bx_core/bitrix/"
+bitrix_www_path: "www/data/"
+bitrix_backup_path: "backup/"
+bitrix_temp_path: "tmp/"
+bitrix_php_sessions_path: "php_sessions/"
+
+bitrix_project_user:
+  name: "bitrix"
+  comment: "Bitrix main user"
+  group: "bitrix"
+  shell: /bin/bash
+  state: present
+  gid: "1010"
+  uid: "1010"

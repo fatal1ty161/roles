@@ -1,0 +1,43 @@
+---
+- name: Create main user
+  include: create_main_user.yml
+  tags:
+    - create_main_user
+
+- name: Remove Nginx Web Server
+  ansible.builtin.dnf:
+    name=nginx
+    state=absent
+  when:
+    ansible_os_family == "RedHat"
+
+- name: Install Nginx Web Server
+  ansible.builtin.dnf:
+    name=nginx
+    state=latest
+  when:
+    ansible_os_family == "RedHat"
+  notify:
+    - restart nginx service
+
+- name: Disable the default site
+  file:
+    path: "{{ nginx_conf_dir }}"
+    state: absent
+
+- name: create nginx folder
+  file:
+    path: /etc/nginx
+    state: directory
+    owner: root
+    group: root
+    
+- name: copy nginx_files_conf_on_server
+  copy:
+      src: /home/ansible/roles/install_nginx/files/
+      dest: /etc/nginx
+      force: yes
+      mode: 0644
+      owner: root
+      group: root
+  
